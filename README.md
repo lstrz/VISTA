@@ -6,6 +6,6 @@ Essentially, it is a battery-powered Arduino reading data from an IMU and a GPS.
 
 Hardware used (incomplete list):
 * [Arduino Micro](https://www.arduino.cc/en/Main/ArduinoBoardMicro)
-* [AltIMU-10 v4](https://www.pololu.com/product/2470)
+* [AltIMU-10 v4](https://www.pololu.com/product/2470) (Arduino libraries available in the link)
 
 At the moment, the code is incomplete and supports only the listed hardware.
