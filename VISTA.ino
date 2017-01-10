@@ -5,49 +5,7 @@
 #include <LPS.h>
 #include <Wire.h>
 
-// Define picks between the built-in USB serial communication or the
-// serial over pins 0 and 1.
-// If defined, Serial uses USB.
-#define SERIAL_USB
-
-// Macro for Serial.begin() or Serial1.begin(), depending on the SERIAL_USB (no)define.
-#ifdef SERIAL_USB
-#define log_begin(baud_rate)  \
-  do{                         \
-    Serial.begin(baud_rate);  \
-  }while(false)
-#else
-#define log_begin(baud_rate)   \
-  do{                          \
-    Serial1.begin(baud_rate);  \
-  }while(false)
-#endif
-
-// Macro for Serial.print() or Serial1.print(), depending on the SERIAL_USB (no)define.
-#ifdef SERIAL_USB
-#define log(str)        \
-  do{                   \
-    Serial.print(str);  \
-  }while(false)
-#else
-#define log(str)         \
-  do{                    \
-    Serial1.print(str);  \
-  }while(false)
-#endif
-
-// Macro for Serial.println() or Serial1.println(), depending on the SERIAL_USB (no)define.
-#ifdef SERIAL_USB
-#define logln(str)        \
-  do{                     \
-    Serial.println(str);  \
-  }while(false)
-#else
-#define logln(str)         \
-  do{                      \
-    Serial1.println(str);  \
-  }while(false)
-#endif
+#include "log.h"
 
 const long sensorReadTimeoutMicroseconds = 100000;
 volatile bool doReadSensors = false;
