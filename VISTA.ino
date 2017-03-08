@@ -1,21 +1,22 @@
 #include <TimerThree.h>
 
-#include <L3G.h>
-#include <LSM303.h>
+#include <LSM6.h>
 #include <LPS.h>
 #include <Wire.h>
 
-#include "log.h"
+namespace{
 
-const long sensorReadTimeoutMicroseconds = 100000;
-volatile bool doReadSensors = false;
+constexpr long kSensorReadTimeoutMicroseconds = 1200;
+constexpr long kBaudrate = 115200;
 
-volatile L3G gyro;
-volatile LSM303 acce;
+volatile bool do_read_sensors = false;
+volatile LSM6 imu;
 volatile LPS pres;
 
+}  // namespace
+
 void setup() {
-  log_begin(115200);
+  log_begin(kBaudrate, true /* use_serial_usb */, true /* use_serial_ext */);
   
   for(int i = 10; i >= 0; --i){
     log("Delay: ");
@@ -31,9 +32,9 @@ void setup() {
     // TODO wake from sleep here
   }, FALLING);
   
-  Timer3.initialize(sensorReadTimeoutMicroseconds);
+  Timer3.initialize(kSensorReadTimeoutMicroseconds);
   Timer3.attachInterrupt( [](){
-    doReadSensors = true;
+    do_read_sensors = true;
   });
 }
 
@@ -42,22 +43,21 @@ void readSensors() {
   logln(pres.pressureToAltitudeMeters(pres.readPressureMillibars(), 1006));
 
   logln("Accelerometer");
-  acce.read();
-  logln(acce.a.x);
-  logln(acce.a.y);
-  logln(acce.a.z);
+  imu.read();
+  logln(imu.a.x);
+  logln(imu.a.y);
+  logln(imu.a.z);
 
   logln("Gyroscope");
-  gyro.read();
-  logln(gyro.g.x);
-  logln(gyro.g.y);
-  logln(gyro.g.z);
+  logln(imu.g.x);
+  logln(imu.g.y);
+  logln(imu.g.z);
 }
 
 void loop(){
-  if(doReadSensors){
+  if(do_read_sensors){
     readSensors();
-    doReadSensors = false;
+    do_read_sensors = false;
   }
 }
 
