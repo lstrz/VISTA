@@ -14,35 +14,36 @@ Hardware used:
 
 1. Install g++
 
-  sudo apt install g++
+`sudo apt install g++`
 
 2. Install gflags from the repositories
 
-  sudo apt install libgflags-dev libgflags2v5
+`sudo apt install libgflags-dev libgflags2v5`
 
 3. Install libusb
 
-  sudo apt install libusb-1.0-0-dev libusb-1.0-0
+`sudo apt install libusb-1.0-0-dev libusb-1.0-0`
 
 4. Compile
 Position yourself into the directory where the source code is.
-
-  cmake .
-  make
+```
+cmake .
+make
+```
 
 5. Set udev rules so that you user account has access to the SiGe module
 Go to /etc/udev/rules.d/ and create a file named "sige-module.rules".
 Any filename is ok, but it must end in ".rules".
 Add the following line
 
-  ATTRS{idVendor}=="1781", ATTRS{idProduct}=="0b3f", OWNER="username"
+`ATTRS{idVendor}=="1781", ATTRS{idProduct}=="0b3f", OWNER="username"`
 
 username inside the quotation marks is replaced by your username.
 If this step is skipped, run the program as root.
 
 5. Run
 
-  ./start_sige.sh
+`./start_sige.sh`
 
 
 ## Some notes about SiGe module
