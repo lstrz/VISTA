@@ -9,6 +9,13 @@ The data is stored on an SD card to be post processed on ground and calculate a 
 Hardware used:
  - Raspberry Pi Zero
  - SiGe GPS module
+ 
+Software used:
+ - Raspbian
+ - CMake
+ - gflags
+ - libusb
+ - wiringPi
 
 ## Instructions for Ubuntu
 
