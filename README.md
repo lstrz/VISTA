@@ -52,6 +52,9 @@ If this step is skipped, run the program as root.
 
 `./start_sige.sh`
 
+This step probably won't work on Ubuntu if RocketInterfaceMonitor is used.
+Additionally, [`wiringPi`](http://wiringpi.com/) needs to be installed (on RPi too) to have all elements present.
+
 
 ## Some notes about SiGe module
 
