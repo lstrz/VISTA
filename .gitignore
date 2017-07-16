@@ -1,0 +1,5 @@
+*.o
+Jammer_detect
+log*
+cmake-build-debug/
+.idea/
