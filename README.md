@@ -32,6 +32,7 @@ Software used:
 `sudo apt install libusb-1.0-0-dev libusb-1.0-0`
 
 4. Compile
+
 Position yourself into the directory where the source code is.
 ```
 cmake .
@@ -39,6 +40,7 @@ make
 ```
 
 5. Set udev rules so that you user account has access to the SiGe module
+
 Go to /etc/udev/rules.d/ and create a file named "sige-module.rules".
 Any filename is ok, but it must end in ".rules".
 Add the following line
